@@ -1,0 +1,50 @@
+# Build directories
+build/
+cmake-build-*/
+
+# Compiled objects and CUDA artifacts
+*.o
+*.cubin
+*.ptx
+*.fatbin
+*.so
+*.a
+
+# CMake-generated
+compile_commands.json
+
+# Editors / IDEs
+.vscode/
+.idea/
+.claude/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Profiling outputs
+*.nsys-rep
+*.qdrep
+*.ncu-rep
+*.sqlite
+
+# Local data and binary fixtures (track explicitly with `git add -f` if needed;
+# tests/data/*.bin are tracked via .gitattributes)
+*.npy
+*.h5
+*.hdf5
+
+# Local benchmark results / scratch (hostname-tagged measurement logs)
+results/
+benchmarks/results/
+julia/SunnyGeneigBench/results/
+
+# Local investigation / verification scripts (internal, not for distribution)
+tools/
