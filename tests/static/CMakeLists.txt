@@ -8,7 +8,7 @@ add_executable(test_chol_n54 test_chol_n54.cpp)
 target_link_libraries(test_chol_n54
     PRIVATE
         geneig_fixed
-	LAPACK::LAPACK
+	    LAPACK::LAPACK
         CUDA::cudart
 )
 set_target_properties(test_chol_n54 PROPERTIES

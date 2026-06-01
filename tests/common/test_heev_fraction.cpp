@@ -293,7 +293,6 @@ std::vector<char> compile_variant(int variant) {
         cutlass_inc.c_str(),
         cuda_inc.c_str(),
         cccl_inc.c_str()
-
     };
 
     nvrtcProgram prog = nullptr;
