@@ -36,17 +36,17 @@ set_target_properties(geneig_fixed PROPERTIES
 # `--include-path` and fatbin-path defines. Encapsulate as a function so
 # subdirectory CMakeLists can apply it without duplication.
 function(sunny_geneig_apply_nvrtc_defs target visibility)
+    list(GET CUDAToolkit_INCLUDE_DIRS 0 FIRST_ELEMENT)
+    list(GET CUDAToolkit_INCLUDE_DIRS 1 SECOND_ELEMENT)
     target_compile_definitions(${target}
         ${visibility}
             CUSOLVERDX_FATBIN_PATH="${MathDx_FATBIN}"
             CUSOLVERDX_INCLUDE_DIR="${MathDx_INCLUDE_DIR}"
             CUSOLVERDX_CUTLASS_INCLUDE_DIR="${MathDx_CUTLASS_INCLUDE_DIR}"
-            CUDA_INCLUDE_DIR="/usr/local/cuda-13.3/targets/x86_64-linux/include"
-	    CCCL_INCLUDE_DIR="/usr/local/cuda-13.3/targets/x86_64-linux/include/cccl"
+            CUDA_INCLUDE_DIR="${FIRST_ELEMENT}"
+	        CCCL_INCLUDE_DIR="${SECOND_ELEMENT}"
     )
 endfunction()
-
-message(STATUS "${CUDAToolkit_INCLUDE_DIRS}")
 
 # ---- 3.5j path libraries --------------------------------------------------
 add_subdirectory(unified)

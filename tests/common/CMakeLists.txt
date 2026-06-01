@@ -18,12 +18,14 @@ add_executable(repro_heev_nvrtc  repro_heev_nvrtc.cpp)
 add_executable(repro_potrf_nvrtc repro_potrf_nvrtc.cpp)
 foreach(_t repro_heev_nvrtc repro_potrf_nvrtc)
     target_link_libraries(${_t} PRIVATE CUDA::nvrtc CUDA::cuda_driver)
+    list(GET CUDAToolkit_INCLUDE_DIRS 0 FIRST_ELEMENT)
+    list(GET CUDAToolkit_INCLUDE_DIRS 1 SECOND_ELEMENT)
     target_compile_definitions(${_t}
         PRIVATE
             CUSOLVERDX_INCLUDE_DIR="${MathDx_INCLUDE_DIR}"
             CUSOLVERDX_CUTLASS_INCLUDE_DIR="${MathDx_CUTLASS_INCLUDE_DIR}"
-            CUDA_INCLUDE_DIR="/usr/local/cuda-13.3/targets/x86_64-linux/include"
-            CCCL_INCLUDE_DIR="/usr/local/cuda-13.3/targets/x86_64-linux/include/cccl"
+            CUDA_INCLUDE_DIR="${FIRST_ELEMENT}"
+            CCCL_INCLUDE_DIR="${SECOND_ELEMENT}"
     )
 endforeach()
 
