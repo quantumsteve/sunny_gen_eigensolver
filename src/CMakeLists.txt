@@ -41,10 +41,12 @@ function(sunny_geneig_apply_nvrtc_defs target visibility)
             CUSOLVERDX_FATBIN_PATH="${MathDx_FATBIN}"
             CUSOLVERDX_INCLUDE_DIR="${MathDx_INCLUDE_DIR}"
             CUSOLVERDX_CUTLASS_INCLUDE_DIR="${MathDx_CUTLASS_INCLUDE_DIR}"
-            CUSOLVERDX_OVERLAY_INCLUDE_DIR="${CMAKE_SOURCE_DIR}/src/common/cusolverdx_overlay"
-            CUDA_INCLUDE_DIR="${CUDAToolkit_INCLUDE_DIRS}"
+            CUDA_INCLUDE_DIR="/usr/local/cuda-13.3/targets/x86_64-linux/include"
+	    CCCL_INCLUDE_DIR="/usr/local/cuda-13.3/targets/x86_64-linux/include/cccl"
     )
 endfunction()
+
+message(STATUS "${CUDAToolkit_INCLUDE_DIRS}")
 
 # ---- 3.5j path libraries --------------------------------------------------
 add_subdirectory(unified)

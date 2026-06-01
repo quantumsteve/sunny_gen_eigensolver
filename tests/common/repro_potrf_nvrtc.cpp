@@ -71,6 +71,7 @@ int main() {
     const std::string cusolver_inc = std::string("--include-path=") + CUSOLVERDX_INCLUDE_DIR;
     const std::string cutlass_inc  = std::string("--include-path=") + CUSOLVERDX_CUTLASS_INCLUDE_DIR;
     const std::string cuda_inc     = std::string("--include-path=") + CUDA_INCLUDE_DIR;
+    const std::string cccl_inc     = std::string("--include-path=") + CCCL_INCLUDE_DIR;
 
     const std::vector<const char*> opts = {
         "--std=c++17",
@@ -81,6 +82,7 @@ int main() {
         cusolver_inc.c_str(),
         cutlass_inc.c_str(),
         cuda_inc.c_str(),
+        cccl_inc.c_str()
     };
 
     nvrtcResult res = nvrtcCompileProgram(program,

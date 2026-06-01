@@ -15,7 +15,7 @@
 
 #include <cuComplex.h>
 #include <cuda_runtime.h>
-#include <lapacke.h>
+#include "mkl.h"
 
 #include <algorithm>
 #include <cmath>

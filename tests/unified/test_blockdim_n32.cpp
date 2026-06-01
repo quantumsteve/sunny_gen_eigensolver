@@ -8,7 +8,7 @@
 
 #include <cuComplex.h>
 #include <cuda.h>
-#include <lapacke.h>
+#include "mkl.h"
 
 #include "unified/unified_solver.hpp"
 

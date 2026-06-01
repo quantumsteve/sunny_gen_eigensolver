@@ -6,7 +6,7 @@
 // the eigenvalues and eigenvectors to a binary file in the format declared in
 // the file header below.
 
-#include <lapacke.h>
+#include "mkl.h"
 
 #include <algorithm>
 #include <cmath>

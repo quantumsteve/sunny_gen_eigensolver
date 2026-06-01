@@ -7,10 +7,10 @@
 
 # Fixture-generation tools.
 add_executable(lapack_reference lapack_reference.cpp)
-target_link_libraries(lapack_reference PRIVATE LAPACK::lapacke)
+target_link_libraries(lapack_reference PRIVATE LAPACK::LAPACK)
 
 add_executable(dump_pair dump_pair.cpp)
-target_link_libraries(dump_pair PRIVATE LAPACK::lapacke)
+target_link_libraries(dump_pair PRIVATE LAPACK::LAPACK)
 
 # minimal cuSolverDx NVRTC bug repros (heev fails without
 # the overlay; potrf succeeds on plain cuSolverDx 25.12).
@@ -22,8 +22,8 @@ foreach(_t repro_heev_nvrtc repro_potrf_nvrtc)
         PRIVATE
             CUSOLVERDX_INCLUDE_DIR="${MathDx_INCLUDE_DIR}"
             CUSOLVERDX_CUTLASS_INCLUDE_DIR="${MathDx_CUTLASS_INCLUDE_DIR}"
-            CUSOLVERDX_OVERLAY_INCLUDE_DIR="${CMAKE_SOURCE_DIR}/src/common/cusolverdx_overlay"
-            CUDA_INCLUDE_DIR="${CUDAToolkit_INCLUDE_DIRS}"
+            CUDA_INCLUDE_DIR="/usr/local/cuda-13.3/targets/x86_64-linux/include"
+            CCCL_INCLUDE_DIR="/usr/local/cuda-13.3/targets/x86_64-linux/include/cccl"
     )
 endforeach()
 
@@ -42,7 +42,7 @@ target_link_libraries(bench_xsyev_only
     PRIVATE
         CUDA::cudart
         CUDA::cusolver
-        LAPACK::lapacke
+        LAPACK::LAPACK
 )
 
 # Steven-comparison — standalone cuSOLVER ZheevjBatched (Jacobi) bench.
@@ -51,7 +51,7 @@ target_link_libraries(bench_zheevj_only
     PRIVATE
         CUDA::cudart
         CUDA::cusolver
-        LAPACK::lapacke
+        LAPACK::LAPACK
 )
 
 # Steven-comparison — standalone cuSolverDx::Heev-only bench (NVRTC kernel).
@@ -62,7 +62,7 @@ target_link_libraries(bench_heev_dx_only
         CUDA::cuda_driver
         CUDA::nvrtc
         CUDA::nvJitLink
-        LAPACK::lapacke
+        LAPACK::LAPACK
 )
 sunny_geneig_apply_nvrtc_defs(bench_heev_dx_only PRIVATE)
 

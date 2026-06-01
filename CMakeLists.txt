@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.24)
 cmake_policy(SET CMP0144 NEW)
 
 if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
-    set(CMAKE_CUDA_ARCHITECTURES 120 CACHE STRING "CUDA architectures")
+    set(CMAKE_CUDA_ARCHITECTURES 86 CACHE STRING "CUDA architectures")
 endif()
 
 project(sunny_batched_geneig LANGUAGES CXX CUDA)
@@ -25,7 +25,7 @@ list(PREPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 find_package(CUDAToolkit REQUIRED)
 find_package(MathDx REQUIRED)
-find_package(LAPACKE REQUIRED)
+find_package(LAPACK REQUIRED)
 
 string(APPEND CMAKE_CUDA_FLAGS_RELEASE " -lineinfo")
 

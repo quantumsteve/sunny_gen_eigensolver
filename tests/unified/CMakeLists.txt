@@ -32,7 +32,7 @@ add_executable(test_blockdim_n32 test_blockdim_n32.cpp)
 target_link_libraries(test_blockdim_n32
     PRIVATE
         unified_geneig
-        LAPACK::lapacke
+        LAPACK::LAPACK
         CUDA::cudart
         CUDA::cuda_driver
 )
@@ -42,7 +42,7 @@ add_executable(test_streams_n54 test_streams_n54.cpp)
 target_link_libraries(test_streams_n54
     PRIVATE
         unified_geneig
-        LAPACK::lapacke
+        LAPACK::LAPACK
         CUDA::cudart
         CUDA::cuda_driver
 )

@@ -9,12 +9,12 @@
 set -u
 
 if [ -z "${MATHDX_ROOT:-}" ]; then
-    export MATHDX_ROOT="$HOME/opt/nvidia-mathdx-25.12.1-cuda12"
+    export MATHDX_ROOT="$HOME/Documents/MAIQMag/nvidia-mathdx-26.03.0-cuda13"
 fi
 
 echo "MATHDX_ROOT=$MATHDX_ROOT"
 
-_cusolverdx_header="$MATHDX_ROOT/nvidia/mathdx/25.12/include/cusolverdx.hpp"
+_cusolverdx_header="$MATHDX_ROOT/nvidia/mathdx/26.03/include/cusolverdx.hpp"
 if [ ! -f "$_cusolverdx_header" ]; then
     echo "error: cusolverdx.hpp not found at $_cusolverdx_header" >&2
     return 1 2>/dev/null || exit 1

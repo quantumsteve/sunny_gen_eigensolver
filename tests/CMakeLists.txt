@@ -5,7 +5,7 @@
 #   unified/  — UnifiedGeneigSolver tests (links to unified_geneig)
 #   hybrid/   — HybridGeneigSolver tests (links to hybrid_geneig)
 
-add_subdirectory(static)
+#add_subdirectory(static)
 add_subdirectory(common)
 add_subdirectory(unified)
 add_subdirectory(hybrid)

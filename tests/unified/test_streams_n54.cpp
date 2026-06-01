@@ -23,7 +23,7 @@
 
 #include "unified/unified_solver.hpp"
 
-#include <lapacke.h>
+#include "mkl.h"
 
 #include <algorithm>
 #include <chrono>

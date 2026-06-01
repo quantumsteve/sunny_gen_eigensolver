@@ -107,10 +107,10 @@ struct CompileOpts {
     std::string bpb_def;
     std::string block_dim_def;
     std::string arch_opt;
-    std::string overlay_inc;
     std::string cusolver_inc;
     std::string cutlass_inc;
     std::string cuda_inc;
+    std::string cccl_inc;
     std::vector<const char*> ptrs;
 };
 
@@ -122,10 +122,11 @@ CompileOpts make_opts(int n, int bpb, unsigned block_dim_x, int arch) {
     o.bpb_def       = "-DBATCHES_PER_BLOCK=" + std::to_string(bpb);
     o.block_dim_def = "-DBLOCK_DIM_X="       + std::to_string(block_dim_x);
     o.arch_opt      = "--gpu-architecture=sm_" + std::to_string(arch);
-    o.overlay_inc   = std::string("--include-path=") + CUSOLVERDX_OVERLAY_INCLUDE_DIR;
     o.cusolver_inc  = std::string("--include-path=") + CUSOLVERDX_INCLUDE_DIR;
     o.cutlass_inc   = std::string("--include-path=") + CUSOLVERDX_CUTLASS_INCLUDE_DIR;
     o.cuda_inc      = std::string("--include-path=") + CUDA_INCLUDE_DIR;
+    o.cccl_inc      = std::string("--include-path=") + CCCL_INCLUDE_DIR;
+
     o.ptrs = {
         "--std=c++17",
         "--device-as-default-execution-space",
@@ -137,10 +138,10 @@ CompileOpts make_opts(int n, int bpb, unsigned block_dim_x, int arch) {
         o.bpb_def.c_str(),
         o.block_dim_def.c_str(),
         o.arch_opt.c_str(),
-        o.overlay_inc.c_str(),
         o.cusolver_inc.c_str(),
         o.cutlass_inc.c_str(),
         o.cuda_inc.c_str(),
+        o.cccl_inc.c_str()
     };
     return o;
 }

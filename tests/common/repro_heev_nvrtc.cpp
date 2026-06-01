@@ -81,10 +81,10 @@ int main() {
                                    0, nullptr, nullptr));
 
     const std::string arch_opt     = "--gpu-architecture=sm_" + std::to_string(arch);
-    const std::string overlay_inc  = std::string("--include-path=") + CUSOLVERDX_OVERLAY_INCLUDE_DIR;
     const std::string cusolver_inc = std::string("--include-path=") + CUSOLVERDX_INCLUDE_DIR;
     const std::string cutlass_inc  = std::string("--include-path=") + CUSOLVERDX_CUTLASS_INCLUDE_DIR;
     const std::string cuda_inc     = std::string("--include-path=") + CUDA_INCLUDE_DIR;
+    const std::string cccl_inc     = std::string("--include-path=") + CCCL_INCLUDE_DIR;
 
     const std::vector<const char*> opts = {
         "--std=c++17",
@@ -92,10 +92,10 @@ int main() {
         "-dlto",
         "--relocatable-device-code=true",
         arch_opt.c_str(),
-        overlay_inc.c_str(),    // overlay first — shadows upstream
         cusolver_inc.c_str(),
         cutlass_inc.c_str(),
         cuda_inc.c_str(),
+        cccl_inc.c_str()
     };
 
     nvrtcResult res = nvrtcCompileProgram(program,

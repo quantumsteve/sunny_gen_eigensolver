@@ -12,7 +12,7 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
 #include <cusolverDn.h>
-#include <lapacke.h>
+#include "mkl.h"
 
 #include <algorithm>
 #include <chrono>

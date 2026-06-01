@@ -133,10 +133,11 @@ void HybridGeneigSolver::compile_reduce_kernel_() {
     std::string bpb_def       = "-DBATCHES_PER_BLOCK=" + std::to_string(bpb_);
     std::string block_dim_def = "-DBLOCK_DIM_X="       + std::to_string(kHybridBlockDimX);
     std::string arch_opt      = "--gpu-architecture=sm_" + std::to_string(arch);
-    std::string overlay_inc   = std::string("--include-path=") + CUSOLVERDX_OVERLAY_INCLUDE_DIR;
     std::string cusolver_inc  = std::string("--include-path=") + CUSOLVERDX_INCLUDE_DIR;
     std::string cutlass_inc   = std::string("--include-path=") + CUSOLVERDX_CUTLASS_INCLUDE_DIR;
     std::string cuda_inc      = std::string("--include-path=") + CUDA_INCLUDE_DIR;
+    std::string cccl_inc      = std::string("--include-path=") + CCCL_INCLUDE_DIR;
+
     std::vector<const char*> opts = {
         "--std=c++17",
         "--device-as-default-execution-space",
@@ -148,10 +149,10 @@ void HybridGeneigSolver::compile_reduce_kernel_() {
         bpb_def.c_str(),
         block_dim_def.c_str(),
         arch_opt.c_str(),
-        overlay_inc.c_str(),
         cusolver_inc.c_str(),
         cutlass_inc.c_str(),
         cuda_inc.c_str(),
+        cccl_inc.c_str()
     };
 
     nvrtcProgram prog = nullptr;

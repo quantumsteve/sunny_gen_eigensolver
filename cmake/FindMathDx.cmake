@@ -23,7 +23,7 @@ if(NOT MathDx_ROOT)
     endif()
 endif()
 
-set(_mathdx_subpath "nvidia/mathdx/25.12")
+set(_mathdx_subpath "nvidia/mathdx/26.03")
 
 find_path(MathDx_INCLUDE_DIR
     NAMES cusolverdx.hpp
@@ -50,7 +50,7 @@ find_file(MathDx_FATBIN
 )
 
 if(MathDx_INCLUDE_DIR AND MathDx_CUTLASS_INCLUDE_DIR AND MathDx_LIBRARY AND MathDx_FATBIN)
-    set(MathDx_VERSION "25.12.1")
+    set(MathDx_VERSION "26.03.0")
 endif()
 
 include(FindPackageHandleStandardArgs)
